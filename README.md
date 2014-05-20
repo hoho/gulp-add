@@ -12,7 +12,7 @@ npm install gulp-add --save-dev
 Example:
 
 ```js
-var add = require('gulp-conkitty');
+var add = require('gulp-add');
 
 gulp.task('some-task', function() {
     return gulp.src(['some files'])

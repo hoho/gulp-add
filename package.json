@@ -1,7 +1,7 @@
 {
     "name": "gulp-add",
     "description": "Add files by content at any point in the pipeline",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "homepage": "https://github.com/hoho/gulp-add",
     "repository": "git://github.com/hoho/gulp-add.git",
     "author": "Marat Abdullin <dakota@brokenpipe.ru>",
