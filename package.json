@@ -1,0 +1,33 @@
+{
+    "name": "gulp-add",
+    "description": "Add files by content at any point in the pipeline",
+    "version": "0.0.0",
+    "homepage": "https://github.com/hoho/gulp-add",
+    "repository": "git://github.com/hoho/gulp-add.git",
+    "author": "Marat Abdullin <dakota@brokenpipe.ru>",
+    "license": "MIT",
+    "main": "./index.js",
+    "keywords": [
+        "gulpplugin",
+        "add",
+        "file",
+        "content"
+    ],
+    "bugs": {
+        "url": "https://github.com/hoho/gulp-add/issues"
+    },
+    "dependencies": {
+        "gulp-util": "~2.2.14",
+        "through": "~2.3.4"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "should": "*"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "engines": {
+        "node": ">=0.10"
+    }
+}
