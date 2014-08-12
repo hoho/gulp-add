@@ -1,6 +1,6 @@
 # gulp-add [![Build Status](https://travis-ci.org/hoho/gulp-add.svg?branch=master)](https://travis-ci.org/hoho/gulp-add)
 
-Add files by content at any point in the pipeline
+Add files by contents at any point in the pipeline.
 
 Install:
 
