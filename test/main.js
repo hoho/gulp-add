@@ -46,6 +46,43 @@ describe('gulp-add', function() {
         );
 
 
+        testAdd(
+            add({
+                'newfile1.txt': 'hello world1',
+                'newfile2.txt': 'ololo piu piu'
+            }, true),
+            [
+                'test/oldfile1.txt',
+                'test/oldfile2.txt'
+            ],
+            [
+                'newfile1.txt', 'hello world1',
+                'newfile2.txt', 'ololo piu piu',
+                'test/oldfile1.txt', 'oldfile1',
+                'test/oldfile2.txt', 'oldfile2'
+            ]
+        );
+
+        testAdd(
+            add('newfile1.txt', 'hello world2', true),
+            [
+                'test/oldfile1.txt',
+                'test/oldfile2.txt'
+            ],
+            [
+                'newfile1.txt', 'hello world2',
+                'test/oldfile1.txt', 'oldfile1',
+                'test/oldfile2.txt', 'oldfile2'
+            ]
+        );
+
+        testAdd(
+            add('newfile1.txt', 'hello world3', true),
+            [],
+            ['newfile1.txt', 'hello world3']
+        );
+
+
         function testAdd(stream, files, results) {
             it('should add files', function(done) {
                 stream.on('data', function (file) {

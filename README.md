@@ -16,11 +16,27 @@ var add = require('gulp-add');
 
 gulp.task('some-task', function() {
     return gulp.src(['some files'])
-        .pipe(add('filename1.txt', 'This is first file content'))
+        .pipe(add('filename1.txt', 'First file contents'))
         .pipe(add({
-            'filename2.txt': 'This is second file content',
-            'filename3.txt': 'This is third file content'
+            'filename2.txt': 'Second file contents',
+            'filename3.txt': 'Third file contents'
         }))
         .pipe(gulp.dest('./build'));
 });
+```
+
+By default, new files are being added to the end of the stream. You can insert
+new files in the beginning of the stream:
+
+```js
+.pipe(add('filename1.txt', 'First file contents', true))
+```
+
+or
+
+```js
+.pipe(add({
+    'filename2.txt': 'Second file contents',
+    'filename3.txt': 'Third file contents'
+}, true))
 ```

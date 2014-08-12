@@ -22,7 +22,7 @@ function createFile(path, content) {
 }
 
 
-module.exports = function(files, content) {
+module.exports = function(files, content, before) {
     var oldFiles = [],
         newFiles = [];
 
@@ -32,6 +32,7 @@ module.exports = function(files, content) {
                 newFiles.push(createFile(file, files[file]));
             }
         }
+        before = content;
     } else if (typeof files === 'string') {
         switch (typeof content) {
             case 'string':
@@ -45,6 +46,10 @@ module.exports = function(files, content) {
         throw new PluginError('gulp-add', 'Unknown argument type');
     }
 
+    if ((before !== undefined) && (typeof before !== 'boolean')) {
+        throw new PluginError('gulp-add', '`before` argument should be boolean');
+    }
+
     function bufferContents(file) {
         if (file.isNull()) { return; }
         if (file.isStream()) { return this.emit('error', new PluginError('gulp-add',  'Streaming not supported')); }
@@ -55,6 +60,13 @@ module.exports = function(files, content) {
     function endStream() {
         try {
             var i;
+
+            if (before) {
+                // Insert new files before old ones.
+                i = oldFiles;
+                oldFiles = newFiles;
+                newFiles = i;
+            }
 
             for (i = 0; i < oldFiles.length; i++) {
                 this.emit('data', oldFiles[i]);
