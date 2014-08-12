@@ -17,7 +17,7 @@
         "url": "https://github.com/hoho/gulp-add/issues"
     },
     "dependencies": {
-        "gulp-util": "~2.2.14",
+        "gulp-util": "~3.0.0",
         "through": "~2.3.4"
     },
     "devDependencies": {
