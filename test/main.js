@@ -1,11 +1,9 @@
 var add = require('../');
 var should = require('should');
 var path = require('path');
-var File = require('gulp-util').File;
+var Vinyl = require('vinyl');
 var Buffer = require('buffer').Buffer;
 var fs = require('fs');
-require('mocha');
-
 
 describe('gulp-add', function() {
     describe('add()', function() {
@@ -15,12 +13,12 @@ describe('gulp-add', function() {
                 'newfile2.txt': 'ololo piu piu'
             }),
             [
-                'test/oldfile1.txt',
-                'test/oldfile2.txt'
+                path.join('test', 'oldfile1.txt'),
+                path.join('test', 'oldfile2.txt')
             ],
             [
-                'test/oldfile1.txt', 'oldfile1',
-                'test/oldfile2.txt', 'oldfile2',
+                 path.join('test', 'oldfile1.txt'), 'oldfile1',
+                 path.join('test', 'oldfile2.txt'), 'oldfile2',
                 'newfile1.txt', 'hello world1',
                 'newfile2.txt', 'ololo piu piu'
             ]
@@ -29,12 +27,12 @@ describe('gulp-add', function() {
         testAdd(
             add('newfile1.txt', 'hello world2'),
             [
-                'test/oldfile1.txt',
-                'test/oldfile2.txt'
+                path.join('test', 'oldfile1.txt'),
+                path.join('test', 'oldfile2.txt')
             ],
             [
-                'test/oldfile1.txt', 'oldfile1',
-                'test/oldfile2.txt', 'oldfile2',
+                path.join('test', 'oldfile1.txt'), 'oldfile1',
+                path.join('test', 'oldfile2.txt'), 'oldfile2',
                 'newfile1.txt', 'hello world2'
             ]
         );
@@ -52,27 +50,27 @@ describe('gulp-add', function() {
                 'newfile2.txt': 'ololo piu piu'
             }, true),
             [
-                'test/oldfile1.txt',
-                'test/oldfile2.txt'
+                path.join('test', 'oldfile1.txt'),
+                path.join('test', 'oldfile2.txt')
             ],
             [
                 'newfile1.txt', 'hello world1',
                 'newfile2.txt', 'ololo piu piu',
-                'test/oldfile1.txt', 'oldfile1',
-                'test/oldfile2.txt', 'oldfile2'
+                path.join('test', 'oldfile1.txt'), 'oldfile1',
+                path.join('test', 'oldfile2.txt'), 'oldfile2'
             ]
         );
 
         testAdd(
             add('newfile1.txt', 'hello world2', true),
             [
-                'test/oldfile1.txt',
-                'test/oldfile2.txt'
+                path.join('test', 'oldfile1.txt'),
+                path.join('test', 'oldfile2.txt')
             ],
             [
                 'newfile1.txt', 'hello world2',
-                'test/oldfile1.txt', 'oldfile1',
-                'test/oldfile2.txt', 'oldfile2'
+                path.join('test', 'oldfile1.txt'), 'oldfile1',
+                path.join('test', 'oldfile2.txt'), 'oldfile2'
             ]
         );
 
@@ -110,7 +108,7 @@ describe('gulp-add', function() {
 
                 files.forEach(function (filename) {
                     filename = path.resolve(filename);
-                    stream.write(new File({
+                    stream.write(new Vinyl({
                         path: filename,
                         contents: fs.readFileSync(filename)
                     }));

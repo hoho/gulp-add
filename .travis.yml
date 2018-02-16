@@ -1,7 +1,12 @@
+sudo: false
+
 language: node_js
 
 node_js:
-  - "0.10"
+  - "stable"
+  - "8"
+  - "6"
+  - "4"
 
 before_install:
   - npm install -g mocha
