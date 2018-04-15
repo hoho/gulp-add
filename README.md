@@ -1,4 +1,8 @@
-# gulp-add [![Build Status](https://travis-ci.org/hoho/gulp-add.svg?branch=master)](https://travis-ci.org/hoho/gulp-add)
+# gulp-add
+
+[![NPM version][npm-version-image]][npm-url]
+[![Build Status][build-status-image]][build-status-url]
+[![Downloads][npm-downloads-image]][npm-url]
 
 Add files by contents at any point in the pipeline.
 
@@ -40,3 +44,10 @@ or
     'filename3.txt': 'Third file contents'
 }, true))
 ```
+
+[npm-url]: https://www.npmjs.com/package/gulp-add
+[npm-version-image]: https://img.shields.io/npm/v/gulp-add.svg
+[npm-downloads-image]: http://img.shields.io/npm/dm/gulp-add.svg
+
+[build-status-url]: https://travis-ci.org/hoho/gulp-add
+[build-status-image]: https://travis-ci.org/hoho/gulp-add.svg?branch=master

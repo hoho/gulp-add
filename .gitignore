@@ -1,4 +1,12 @@
 node_modules
-npm-debug.log
-.DS_Store
+bower_components
+coverage
 tmp
+.sass-cache
+yarn.lock
+npm-debug.log
+yarn-error.log
+Thumbs.db
+desktop.ini
+.DS_Store
+!.gitkeep
