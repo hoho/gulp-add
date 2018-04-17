@@ -8,6 +8,7 @@ var fs = require('fs');
 describe('gulp-add', function() {
     describe('add()', function() {
         testAdd(
+            'append two files',
             add({
                 'newfile1.txt': 'hello world1',
                 'newfile2.txt': 'ololo piu piu'
@@ -25,6 +26,7 @@ describe('gulp-add', function() {
         );
 
         testAdd(
+            'append one file',
             add('newfile1.txt', 'hello world2'),
             [
                 path.join('test', 'oldfile1.txt'),
@@ -38,6 +40,7 @@ describe('gulp-add', function() {
         );
 
         testAdd(
+            'one file as a source stream (before false)',
             add('newfile1.txt', 'hello world3'),
             [],
             ['newfile1.txt', 'hello world3']
@@ -45,6 +48,7 @@ describe('gulp-add', function() {
 
 
         testAdd(
+            'prepend two files',
             add({
                 'newfile1.txt': 'hello world1',
                 'newfile2.txt': 'ololo piu piu'
@@ -62,6 +66,7 @@ describe('gulp-add', function() {
         );
 
         testAdd(
+            'prepend one file',
             add('newfile1.txt', 'hello world2', true),
             [
                 path.join('test', 'oldfile1.txt'),
@@ -75,14 +80,15 @@ describe('gulp-add', function() {
         );
 
         testAdd(
+            'one file as a source stream (before true)',
             add('newfile1.txt', 'hello world3', true),
             [],
             ['newfile1.txt', 'hello world3']
         );
 
 
-        function testAdd(stream, files, results) {
-            it('should add files', function(done) {
+        function testAdd(title, stream, files, results) {
+            it(title, function(done) {
                 stream.on('data', function (file) {
                     var expectedFilename = results.shift(),
                         expectedHead = results.shift();
